@@ -14,7 +14,7 @@ if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
 fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
-cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}/${APP_BASE}"
+cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}"
 
 if [ $? -ne 0 ]; then
     echo "FAILED to copy Procfile" | indent
