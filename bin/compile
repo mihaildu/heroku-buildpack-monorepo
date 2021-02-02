@@ -14,14 +14,10 @@ if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
 fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
-(
-    mv "${BUILD_DIR}/${APP_BASE}" "${STAGE}" &&
-    rm -rf "${BUILD_DIR}" &&
-    mv "${STAGE}/$(basename "$APP_BASE")" "${BUILD_DIR}"
-)
+cd "${BUILD_DIR}/${APP_BASE}"
 
 if [ $? -ne 0 ]; then
-    echo "FAILED to copy directory into place" | indent
+    echo "FAILED to change directory" | indent
     exit 1
 fi
 
