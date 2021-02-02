@@ -14,12 +14,12 @@ if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
 fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
-cd "${BUILD_DIR}/${APP_BASE}"
+cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}/${APP_BASE}"
 
 if [ $? -ne 0 ]; then
-    echo "FAILED to change directory" | indent
+    echo "FAILED to copy Procfile" | indent
     exit 1
 fi
 
-echo "Copied ${APP_BASE} to root of app successfully" | indent
+echo "Copied Procfile from ${APP_BASE} successfully" | indent
 
