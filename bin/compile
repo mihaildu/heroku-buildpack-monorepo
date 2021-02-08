@@ -8,14 +8,15 @@ CACHE_DIR="$2"
 ENV_DIR="$3"
 STAGE="$(mktemp -d)"
 
-if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
-    echo "APP_BASE was not set. Aborting" | indent
+if [ ! -f "${ENV_DIR}/APP_NAME" ]; then
+    echo "APP_NAME was not set. Aborting" | indent
     exit 1
 fi
-APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
+APP_NAME="$(cat "${ENV_DIR}/APP_NAME")"
+APP_BASE="packages/${APP_NAME}"
 
 cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}"
 cp "${BUILD_DIR}/${APP_BASE}/release.sh" "${BUILD_DIR}"
 
-echo "Finished copying files for ${APP_BASE}" | indent
+echo "Finished copying files for ${APP_NAME}" | indent
 
