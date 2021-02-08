@@ -14,15 +14,8 @@ if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
 fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 
-(
-    cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}" &&
-    cp "${BUILD_DIR}/${APP_BASE}/build.sh" "${BUILD_DIR}/scripts"
-)
+cp "${BUILD_DIR}/${APP_BASE}/Procfile" "${BUILD_DIR}"
+cp "${BUILD_DIR}/${APP_BASE}/release.sh" "${BUILD_DIR}"
 
-if [ $? -ne 0 ]; then
-    echo "FAILED to copy files" | indent
-    exit 1
-fi
-
-echo "Copied files from ${APP_BASE} successfully" | indent
+echo "Finished copying files for ${APP_BASE}" | indent
 
